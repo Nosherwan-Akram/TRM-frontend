@@ -14,6 +14,10 @@ const Login = (props) => {
     if (loginForm.username.length > 0) {
       console.log(loginForm);
       fetch("http://localhost:5000/login", {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify(loginForm),
         method: "POST",
       })
@@ -22,10 +26,10 @@ const Login = (props) => {
             if (res.status == 400) {
               errorUpdater("Wrong Password");
             } else {
-              localStorage.setItem(
-                "token",
-                "shoiashdhg23821y39huudhf8972397yh98327t498324y92.jhunduih3987y983493284.9892831hdu7h77igds"
-              );
+              console.log("token setting in local store");
+              localStorage.setItem("token", res.access_token);
+              localStorage.setItem("username", res.username);
+              console.log(localStorage);
               logChanger(true);
             }
           });

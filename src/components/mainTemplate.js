@@ -7,6 +7,7 @@ class MainTemplate extends Component {
     dam: [],
     imgFile: null,
     logout: false,
+    fileName: "output",
   };
   componentDidMount() {}
   fileHandler = (event) => {
@@ -17,6 +18,9 @@ class MainTemplate extends Component {
     fd.append("Image", this.state.imgFile, "test.jpg");
     const url = "http://localhost:5000/uploads";
     fetch(url, {
+      headers: {
+        Authorization: "JWT " + localStorage.token,
+      },
       method: "POST",
       body: fd,
     })
@@ -32,9 +36,27 @@ class MainTemplate extends Component {
   fileName = (event) => {
     this.setState({ fileName: event.target.value });
   };
+  fileSave = () => {
+    const url = "http://localhost:5000/save";
+    let data = [localStorage.username, this.state.fileName];
+    fetch(url, {
+      headers: {
+        Authorization: "JWT " + localStorage.token,
+      },
+      method: "POST",
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((re) => {
+        console.log(re);
+      });
+  };
   fileDigitize = () => {
     const url = "http://localhost:5000/tr";
     fetch(url, {
+      headers: {
+        Authorization: "JWT " + localStorage.token,
+      },
       method: "POST",
     })
       .then((response) => response.json())
@@ -81,15 +103,19 @@ class MainTemplate extends Component {
         <button onClick={this.fileUpload} className="btn btn-success mx-1">
           Upload
         </button>
-        <input
-          type="text"
-          placeholder="enter output file name"
-          onChange={this.fileName}
-        ></input>
+
         <button onClick={this.fileDigitize} className="btn btn-success mx-1">
           Digitize
         </button>
-        <button className="btn btn-success" onClick={() => this.signout()}>
+        <input
+          type="text"
+          placeholder="enter output file name to save"
+          onChange={this.fileName}
+        ></input>
+        <button className="btn btn-success mx-1" onClick={this.fileSave}>
+          Save File
+        </button>
+        <button className="btn btn-success mx-1" onClick={() => this.signout()}>
           Signout
         </button>
         <ReactTable columns={columns} data={this.state.dam}></ReactTable>
