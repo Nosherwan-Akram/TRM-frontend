@@ -7,6 +7,7 @@ class MainTemplate extends Component {
     dam: [],
     imgFile: null,
     logout: false,
+    gotoFiles: false,
     fileName: "output",
   };
   componentDidMount() {}
@@ -65,6 +66,9 @@ class MainTemplate extends Component {
         this.setState({ dam: JSON.parse(dam) });
       });
   };
+  userFiles = () => {
+    this.setState({ gotoFiles: true });
+  };
 
   render() {
     const columns = [
@@ -115,10 +119,14 @@ class MainTemplate extends Component {
         <button className="btn btn-success mx-1" onClick={this.fileSave}>
           Save File
         </button>
+        <button className="btn btn-success mx-1" onClick={this.userFiles}>
+          User Files
+        </button>
         <button className="btn btn-success mx-1" onClick={() => this.signout()}>
           Signout
         </button>
         <ReactTable columns={columns} data={this.state.dam}></ReactTable>
+        {this.state.gotoFiles && <Redirect to="/showfiles"></Redirect>}
         {this.state.logout && <Redirect to="/login" />}
       </div>
     );

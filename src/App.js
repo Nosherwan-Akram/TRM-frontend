@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import MainTemplate from "./components/mainTemplate";
+import Files from "./components/userFiles";
 import Signup from "./components/signup/signup.js";
 import Login from "./components/login/login.js";
 import {
@@ -18,6 +19,9 @@ class App extends Component {
           <Switch>
             <UserRoute exact path="/">
               <MainTemplate />
+            </UserRoute>
+            <UserRoute path="/showfiles">
+              <Files></Files>
             </UserRoute>
             <GuestRoute path="/signup">
               <Signup></Signup>
