@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-// import LoginBackground from "../../../assets/backgrounds/loginBackground.svg";
+import LoginBackground from "../../assets/backgrounds/loginBackground.svg";
 import { LoginForm } from "./loginform";
 // import { loginRequest } from "../../../services/open/auth";
 // import store from "../../../redux/store";
@@ -61,6 +61,7 @@ const Login = (props) => {
 
 export const LoginContainer = styled.div`
   min-height: 100vh;
+  // background: url(${LoginBackground});
   background-repeat: no-repeat;
   background-position: top right;
   background-size: 100% auto;
