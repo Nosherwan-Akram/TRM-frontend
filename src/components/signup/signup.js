@@ -18,7 +18,7 @@ const Signup = (props) => {
       console.log(registerUser);
       let body = registerUser;
       delete body.rePassword;
-      fetch("http://localhost:5000/signup", {
+      fetch("http://localhost:5000/api/signup", {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
