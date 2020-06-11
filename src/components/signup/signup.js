@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import signupBackground from "../../assets/backgrounds/signupBackground.svg";
+import signupBackground from "../../assets/backgrounds/background.jpg";
 import SignupForm from "./signupForm";
 // import { signupRequest } from "../../../services/open/auth";
 import { Redirect, Link } from "react-router-dom";
@@ -62,7 +62,7 @@ export default Signup;
 
 export const SignupContainer = styled.div`
   min-height: 100vh;
-  // background: url(${signupBackground});
+  background: url(${signupBackground});
   background-repeat: no-repeat;
   background-position: right center;
   background-size: auto 100%;
