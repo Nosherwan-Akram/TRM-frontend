@@ -13,7 +13,7 @@ const Login = (props) => {
   useEffect(() => {
     if (loginForm.username.length > 0) {
       console.log(loginForm);
-      fetch("http://localhost:5000/api/login", {
+      fetch("/api/login", {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",

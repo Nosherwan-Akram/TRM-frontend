@@ -16,7 +16,7 @@ class Files extends Component {
     this.setState({ gotoDigitize: true });
   };
   componentDidMount() {
-    const url = "http://localhost:5000/api/showfiles";
+    const url = "/api/showfiles";
     fetch(url, {
       headers: {
         Authorization: "JWT " + localStorage.token,
