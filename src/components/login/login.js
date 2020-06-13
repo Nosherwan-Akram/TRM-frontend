@@ -49,7 +49,7 @@ const Login = (props) => {
             {error && <div className="alert alert-danger">{error}</div>}
             <hr className="w-100" />
             <Link className="btn btn-success w-100" to="signup">
-              Signup
+              Go to Signup
             </Link>
           </div>
         </div>

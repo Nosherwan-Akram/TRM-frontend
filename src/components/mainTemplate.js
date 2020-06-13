@@ -9,6 +9,7 @@ class MainTemplate extends Component {
     logout: false,
     gotoFiles: false,
     fileName: "output",
+    uploaded: false,
   };
   componentDidMount() {}
   fileHandler = (event) => {
@@ -27,6 +28,9 @@ class MainTemplate extends Component {
     })
       .then((response) => response.json())
       .then((re) => {
+        if (re.status == 200) {
+          this.setState({ uploaded: true });
+        }
         console.log(re);
       });
   };
@@ -104,6 +108,11 @@ class MainTemplate extends Component {
     return (
       <div className="container">
         <input type="file" onChange={this.fileHandler}></input>
+        {this.state.uploaded ? (
+          <span style={{ color: "green" }}>Uploaded</span>
+        ) : (
+          <span style={{ color: "red" }}>Not Uploaded</span>
+        )}
         <button onClick={this.fileUpload} className="btn btn-success mx-1">
           Upload
         </button>

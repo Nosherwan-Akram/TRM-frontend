@@ -84,8 +84,9 @@ const SignupForm = (props) => {
               >
                 Signup
               </button>
+              <hr className="w-100" />
               <Link className="btn btn-success w-100 my-1" to="/login">
-                Login
+                Go To Login
               </Link>
             </div>
           </div>
