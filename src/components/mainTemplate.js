@@ -18,7 +18,7 @@ class MainTemplate extends Component {
   fileUpload = () => {
     const fd = new FormData();
     fd.append("Image", this.state.imgFile, "test.jpg");
-    const url = "/api/uploads";
+    const url = "http://localhost:5000/api/uploads";
     fetch(url, {
       headers: {
         Authorization: "JWT " + localStorage.token,
@@ -42,7 +42,7 @@ class MainTemplate extends Component {
     this.setState({ fileName: event.target.value });
   };
   fileSave = () => {
-    const url = "/api/save";
+    const url = "http://localhost:5000/api/save";
     let data = [localStorage.username, this.state.fileName];
     fetch(url, {
       headers: {
@@ -57,7 +57,7 @@ class MainTemplate extends Component {
       });
   };
   fileDigitize = () => {
-    const url = "/api/tr";
+    const url = "http://localhost:5000/api/tr";
     fetch(url, {
       headers: {
         Authorization: "JWT " + localStorage.token,
